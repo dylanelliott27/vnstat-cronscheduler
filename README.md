@@ -5,6 +5,8 @@ every day at 8AM, which is vnstat in a childprocess to pull the overall outbound
 
 Once the bandwith amount is half of the limit, an email is sent to inform of the amount.
 
+This app uses node-cron for the scheduling and nodemailer for sending the emails
+
 ### How to use
 Require the module file, then instantiate an instance of the outboundtrafficmonitor object with the options as per the specification below.
 
