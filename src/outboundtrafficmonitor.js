@@ -39,12 +39,10 @@ outboundTrafficMonitor.prototype.getCurrentData = function(){
 			console.log(err)
 		}
 		this.networkData = stdout;
-	})	
-
-	netstatTraffic.on('close', () => {
 		this.parseData(this.networkData);
-	});
+	})	
 }
+
 
 outboundTrafficMonitor.prototype.parseData = function(data){
 	try{
@@ -60,8 +58,9 @@ outboundTrafficMonitor.prototype.parseData = function(data){
 	}
 	
 	if(sentTrafficInBytes > 500000000000){
+		this.emailbody.subject = `WARNING: currently at: ${(sentTrafficInBytes / (1024*1024).toFixed(2))}`;
 		this.sendEmailAlert(sentTrafficInBytes);
-		this.writeToLogFile(sentTrafficInBytes);
+		this.writeToLogFile(null, `WARNING: ${new Date().toDateString()} ~~~~ outbound data measured: ${(sentTrafficInBytes / (1024 * 1024).toFixed(2))}`);
 	}
 	else{
 		console.log('in good shape');
@@ -89,15 +88,18 @@ outboundTrafficMonitor.prototype.sendEmailAlert = function(currentBandwith){
 	transporter.sendMail(mailOptions, function(err, info){
 		if(err){
 			console.log(err);
+			this.writeToLogFile(0, 'ERROR');
 		}
 		else{
 			console.log('email sent' + info.response);
+			this.writeToLogFile(0, 'SUCCESS: E-mail delivered');
 		}
-	})
+	}.bind(this))
 }
-outboundTrafficMonitor.prototype.writeToLogFile = function(measuredData){
+
+outboundTrafficMonitor.prototype.writeToLogFile = function(measuredData, notification){
 	let logString = `${new Date().toDateString()} ~~~~ outbound data measured: ${(measuredData / (1024*1024)).toFixed(2)} \n`;
-	fs.appendFile('log.txt', logString, err => {
+	fs.appendFile('log.txt', notification ? `${notification} \n` : logString, err => {
 		if (err) throw err;
 		console.log('wrote to log file');
  	 })

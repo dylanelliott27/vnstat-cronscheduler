@@ -1,0 +1,30 @@
+SUCCESS: E-mail delivered 
+SUCCESS: E-mail delivered 
+SUCCESS: E-mail delivered 
+ERROR 
+ERROR 
+ERROR 
+ERROR 
+ERROR 
+SUCCESS: E-mail delivered 
+Wed Aug 12 2020 ~~~~ outbound data measured: 476837.16 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 
+Wed Aug 12 2020 ~~~~ outbound data measured: 476837.16 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 
+SUCCESS: E-mail delivered 
+WARNING: Wed Aug 12 2020 ~~~~ outbound data measured: 476837.1582040787 
+SUCCESS: E-mail delivered 

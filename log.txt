@@ -13,3 +13,11 @@ Wed Aug 12 2020 ~~~~ outbound data measured: 24.64
 Wed Aug 12 2020 ~~~~ outbound data measured: 24.82 
 Wed Aug 12 2020 ~~~~ outbound data measured: 24.82 
 Wed Aug 12 2020 ~~~~ outbound data measured: 25.00 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.30 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.30 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.44 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.47 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.47 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.47 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.60 
+Wed Aug 12 2020 ~~~~ outbound data measured: 25.60 
