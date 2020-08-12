@@ -42,3 +42,7 @@ let options = {
 	}
 }
 ```
+
+### Dependencies
+
+I am using both node-cron and nodemailer in this application. you can find a link to their repo and their license in the license-3rd-party.txt file
