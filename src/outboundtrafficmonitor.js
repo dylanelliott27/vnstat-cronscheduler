@@ -1,6 +1,6 @@
 const {exec} = require('child_process');
 const nodemailer = require('nodemailer');
-const CronJob = require('cron').CronJob;
+const {CronJob} = require('cron');
 const fs = require('fs');
 
 function outboundTrafficMonitor(options){
@@ -16,14 +16,11 @@ function outboundTrafficMonitor(options){
 	this.schedule = options.schedule || '0 0 8 * * *';
 	this.emailcredentials = {email: options.emailcredentials.email, password: options.emailcredentials.password};
 	this.emailbody = options.emailbody;
-	this.logFileLocation = options.logfile || true;
+	this.logFile = options.logfile || true;
 	this.connectionInfo = options.emailcredentials.server || {hostname: options.emailcredentials.host, port: options.emailcredentials.port};
 	this.networkData = null;
 }
 
-outboundTrafficMonitor.prototype.validateOptions = function(){
-
-}
 
 outboundTrafficMonitor.prototype.initialize = function(){
 	var job = new CronJob(
@@ -34,9 +31,7 @@ outboundTrafficMonitor.prototype.initialize = function(){
 	)
 	console.log('intiaialized');
 }
-outboundTrafficMonitor.prototype.end = function(){
 
-}
 
 outboundTrafficMonitor.prototype.getCurrentData = function(){
 	var netstatTraffic = exec('vnstat --json', (err, stdout, stderr) => {
@@ -44,8 +39,7 @@ outboundTrafficMonitor.prototype.getCurrentData = function(){
 			console.log(err)
 		}
 		this.networkData = stdout;
-	})
-	console.log(this.parseData)	
+	})	
 
 	netstatTraffic.on('close', () => {
 		this.parseData(this.networkData);
@@ -56,8 +50,8 @@ outboundTrafficMonitor.prototype.parseData = function(data){
 	try{
 		var dataInJson = JSON.parse(data);	
 	}
-	catch{
-		throw new Error('invalid input to parseTrafficData');
+	catch(error){
+		throw error;
 	}
 
 	let sentTrafficInBytes = dataInJson.interfaces[0].traffic.total.tx;
@@ -66,7 +60,8 @@ outboundTrafficMonitor.prototype.parseData = function(data){
 	}
 	
 	if(sentTrafficInBytes > 500000000000){
-		this.sendAlertEmail(sentTrafficInBytes);
+		this.sendEmailAlert(sentTrafficInBytes);
+		this.writeToLogFile(sentTrafficInBytes);
 	}
 	else{
 		console.log('in good shape');
